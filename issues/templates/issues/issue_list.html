@@ -14,7 +14,7 @@
                 <h3>{{ issue.name }}</h3>
                 <p><strong>Summary:</strong> {{ issue.summary }}</p>
                 <p><strong>Reporter:</strong> {{ issue.reporter.username }}</p>
-                <p><strong>Assignee:</strong> {{ issue.assignee.username if issue.assignee else "Unassigned" }}</p>
+                <p><strong>Assignee:</strong> {{ issue.assignee.username }}</p>
                 <p><strong>Status:</strong> {{ issue.get_status_display }}</p>
                 <p><strong>Priority:</strong> {{ issue.get_priority_display }}</p>
                 <p><strong>Created On:</strong> {{ issue.created_on|date:"M d, Y H:i" }}</p>
