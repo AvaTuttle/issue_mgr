@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Issue Detail | MyProject{% endblock %}
+
+{% block content %}
+<h1>{{ issue.name }}</h1>
+<hr>
+
+<p><strong>Summary:</strong> {{ issue.summary }}</p>
+<p><strong>Description:</strong> {{ issue.description }}</p>
+<p><strong>Reporter:</strong> {{ issue.reporter.username }}</p>
+<p><strong>Assignee:</strong>
+    {% if issue.assignee %}
+        {{ issue.assignee.username }}
+    {% else %}
+        Unassigned
+    {% endif %}
+</p>
+<p><strong>Status:</strong> {{ issue.status }}</p>
+<p><strong>Priority:</strong> {{ issue.priority_level }}</p>
+<p><strong>Created On:</strong> {{ issue.created_on|date:"M d, Y H:i" }}</p>
+
+<!-- Link to update the issue (only if the user has permission) -->
+<a href="{% url 'issues:issue_update' issue.pk %}">Update Issue</a>
+{% endblock %}

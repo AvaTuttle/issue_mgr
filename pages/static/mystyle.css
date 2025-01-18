@@ -1,28 +1,66 @@
-/* mystyle.css */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* Reset and Basic Styles */
+html, body {
     margin: 0;
     padding: 0;
-}
-
-h1, h2 {
+    height: 100%;  /* Required for the flex container to stretch full height */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     color: #333;
 }
 
-a {
-    color: #007BFF;
-    text-decoration: none;
+/* Make body a flex container to keep footer at bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    /* min-height: 100%;  <-- Not strictly necessary with html/body { height:100% } */
 }
 
-a:hover {
+/* Header */
+.site-header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+/* Navbar container */
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Navigation list */
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+/* Menu links */
+.nav-list li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+.nav-list li a:hover {
     text-decoration: underline;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Main content: Flex '1' ensures it grows to fill the space */
+main {
+    flex: 1;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Footer: flex-shrink: 0 ensures the footer doesn't shrink and stays at bottom */
+.site-footer {
+    flex-shrink: 0;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
 }

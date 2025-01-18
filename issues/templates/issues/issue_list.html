@@ -1,34 +1,28 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}Issues{% endblock %}
+{% block title %}Issues | MyProject{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Issues</h1>
-    <hr>
+<h1>Issue Board</h1>
+<hr>
 
-    <h2>Existing Issues</h2>
-    <div class="issues-grid">
-        {% for issue in issues %}
-            <div class="issue-card">
-                <h3>{{ issue.name }}</h3>
-                <p><strong>Summary:</strong> {{ issue.summary }}</p>
-                <p><strong>Reporter:</strong> {{ issue.reporter.username }}</p>
-                <p><strong>Assignee:</strong> {{ issue.assignee.username }}</p>
-                <p><strong>Status:</strong> {{ issue.get_status_display }}</p>
-                <p><strong>Priority:</strong> {{ issue.get_priority_display }}</p>
-                <p><strong>Created On:</strong> {{ issue.created_on|date:"M d, Y H:i" }}</p>
-            </div>
-        {% empty %}
-            <p>No issues available.</p>
-        {% endfor %}
+<div class="issues-container">
+    {% for issue in issues %}
+    <div class="issue-card">
+        <h3>
+            <a href="{% url 'issues:issue_detail' issue.pk %}">{{ issue.name }}</a>
+        </h3>
+        <p><strong>Summary:</strong> {{ issue.summary }}</p>
+        <p><strong>Status:</strong> {{ issue.status }}</p>
+        <p><strong>Priority:</strong> {{ issue.priority_level }}</p>
     </div>
-
-    <h2>Create New Issue</h2>
-    <form method="post" class="issue-form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn">Create Issue</button>
-    </form>
+    {% empty %}
+    <p>No issues found.</p>
+    {% endfor %}
 </div>
+
+<!-- Link to create a new issue (if allowed by permissions) -->
+<p>
+    <a href="{% url 'issue_create' %}">Create New Issue</a>
+</p>
 {% endblock %}

@@ -2,32 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Issue Manager{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="{% static 'issues.css' %}">
+    <link rel="stylesheet" href="{% static '/mystyle.css' %}">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/issues">Issues</a></li>
-
-
+    <header class="site-header">
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'issue_list' %}">Issues</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="content">
-        {% block content %}
-        <!-- Default content will go here -->
-        {% endblock %}
-    </div>
+    <!-- Main content area where each page’s unique content goes -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 
-    <footer>
+    <footer class="site-footer">
         <p>&copy; 2025 Issue Manager</p>
     </footer>
 </body>

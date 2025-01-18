@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Create an Issue | MyProject{% endblock %}
+
+{% block content %}
+<h1>Create a New Issue</h1>
+<hr>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create</button>
+</form>
+{% endblock %}
